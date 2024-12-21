@@ -7,12 +7,10 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] Slider healthSlider;
-    [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text livesText;
 
     private Coroutine livesColorChange = null;
 
-    private Coroutine timerColorChange = null;
 
     public void SetHPBar(float hp)
     {
@@ -24,30 +22,10 @@ public class UIController : MonoBehaviour
         healthSlider.SetValueWithoutNotify(healthSlider.value + hp);
     }
 
-    public void SetTimer(int seconds)
-    {
-        timerText.text = "" + seconds;
-    }
-
-    public void IncreaseTimer(int seconds)
-    {
-        if (timerColorChange != null) StopCoroutine(timerColorChange);
-        timerColorChange = StartCoroutine(GoFromColorToColorIn(0.2f, Color.green, Color.white, timerText));
-        SetTimer(seconds);
-    }
-
-
-    public void DecreaseTimer(int seconds)
-    {
-        if (timerColorChange != null) StopCoroutine(timerColorChange);
-        timerColorChange = StartCoroutine(GoFromColorToColorIn(0.2f, Color.red, Color.white, timerText));
-        SetTimer(seconds);
-    }
-
 
     public void SetLivesSilently(int lives)
     {
-        livesText.text = "x " + lives;
+        livesText.text = "" + lives;
     }
 
     public void IncreaseLives(int lives)
@@ -64,18 +42,6 @@ public class UIController : MonoBehaviour
         SetLivesSilently(lives);
     }
 
-
-    public void StopTimer()
-    {
-        if (timerColorChange != null) StopCoroutine(timerColorChange);
-        timerText.faceColor = Color.yellow;
-    }
-
-    public void ResumeTimer()
-    {
-        if (timerColorChange != null) StopCoroutine(timerColorChange);
-        timerText.faceColor = Color.white;
-    }
 
     IEnumerator GoFromColorToColorIn(float seconds, Color colorFrom, Color colorTo, TMP_Text text)
     {

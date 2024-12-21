@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         INS = this;
         uiController = FindObjectOfType<UIController>();
-        uiController.SetTimer((int)System.Math.Round(tiempo, 2));
+        //uiController.SetTimer((int)System.Math.Round(tiempo, 2));
 
     }
 
@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour
         if (tiempo >= 0 && !tiempoParado)
         {
             tiempo -= Time.deltaTime;
-            uiController.SetTimer((int)System.Math.Round(tiempo, 0));
+            //uiController.SetTimer((int)System.Math.Round(tiempo, 0));
         }
         else if (tiempoParado)
         {
-            EmpezarCooldownTiempoParado();
+            //EmpezarCooldownTiempoParado();
 
         }
         else
@@ -47,37 +47,7 @@ public class GameManager : MonoBehaviour
         Score();
     }
 
-    public void SumarTiempo(int tiempo)
-    {
-        this.tiempo += tiempo;
-        uiController.IncreaseTimer(tiempo);
-    }
 
-    public void RestarTiempo(int tiempo)
-    {
-        this.tiempo -= tiempo;
-        uiController.DecreaseTimer(tiempo);
-    }
-
-    public void PararTiempo()
-    {
-        tiempoParado = true;
-        uiController.StopTimer();
-
-    }
-
-    private void EmpezarCooldownTiempoParado()
-    {
-        //Por 5 segundos el contador del tiempo se mantiene parado
-        coolDownTiempoParado -= Time.deltaTime;
-
-        if (coolDownTiempoParado <= 0)
-        {
-            tiempoParado = false;
-            coolDownTiempoParado = 5;
-            uiController.ResumeTimer();
-        }
-    }
 
     private void Score()
     {
