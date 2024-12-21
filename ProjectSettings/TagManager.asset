@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Stick
   - Pino
+  - Enemy
   layers:
   - Default
   - TransparentFX

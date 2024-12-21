@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioManager _audioManager;
     private Rigidbody2D _rb;
     private PlayerInputActions _playerActions;
-
+    private SpriteRenderer _spriteRenderer;
 
     private Vector2 _moveInput;
 
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         _playerActions = new PlayerInputActions();
         _audioManager = FindObjectOfType<AudioManager>();
         _rb = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -41,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveInput = _playerActions.Player.Move.ReadValue<Vector2>();
         _rb.MovePosition(new Vector2(_rb.position.x + _moveInput.x * 0.01f * velocidad, _rb.position.y + _moveInput.y * 0.01f * velocidad));
+        _spriteRenderer.flipX = _moveInput.x < 0;
+
     }
     /*
         private void Moverse(InputAction.CallbackContext callbackContext)
