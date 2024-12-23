@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private PlayerInputActions _playerActions;
     private SpriteRenderer _spriteRenderer;
-
     private Vector2 _moveInput;
+    private Animator _animator;
 
     private void Awake()
     {
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         _audioManager = FindObjectOfType<AudioManager>();
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 
 
@@ -40,8 +41,17 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         _moveInput = _playerActions.Player.Move.ReadValue<Vector2>();
-        _rb.MovePosition(new Vector2(_rb.position.x + _moveInput.x * 0.01f * velocity, _rb.position.y + _moveInput.y * 0.01f * velocity));
-        _spriteRenderer.flipX = _moveInput.x < 0;
+
+        if (_moveInput.x != 0)
+        {
+            _rb.MovePosition(new Vector2(_rb.position.x + _moveInput.x * 0.01f * velocity, _rb.position.y + _moveInput.y * 0.01f * velocity));
+            _animator.SetBool("isWalking", true);
+            _spriteRenderer.flipX = _moveInput.x > 0;
+        }
+        else
+        {
+            _animator.SetBool("isWalking", false);
+        }
 
     }
 }
