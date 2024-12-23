@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4285787004471542304}
   - component: {fileID: 7900846006356444007}
   - component: {fileID: 2097796949951827498}
-  m_Layer: 0
+  - component: {fileID: 275056394148757315}
+  m_Layer: 6
   m_Name: BarcoChico
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -158,3 +159,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.03125, y: 1.765625}
   m_EdgeRadius: 0
+--- !u!114 &275056394148757315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864666479072975734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a1c2a40301fe54b94e828ce16c01d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1
+  hp: 0
+  destroy: {fileID: 0}

@@ -17,14 +17,14 @@ public class EnemyManager : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         lastEnemySpawnTime = 0f;
-        //Spawn(1);
+        Spawn(1);
     }
 
     void FixedUpdate()
     {
         if (Time.fixedTime - lastEnemySpawnTime > timeBetweenSpawns)
         {
-            //Spawn(1);
+            Spawn(1);
             lastEnemySpawnTime = Time.fixedTime;
         }
     }
