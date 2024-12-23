@@ -13,12 +13,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip loseSound;
-
-    [SerializeField] private int currentPlayerAmmo = 5;
-    [SerializeField] private int maxPlayerAmmo = 5;
-    [SerializeField] private int currentPlayerLives = 3;
-    [SerializeField] private int maxPlayerLives = 3;
-
     [SerializeField] Transform spawnTransform;
     public KeyCode resetKey = KeyCode.R;
     public KeyCode pauseKey = KeyCode.P;
@@ -29,9 +23,6 @@ public class GameManager : MonoBehaviour
     private int sceneIndexToLoadIfReset;
     private AudioManager audioManager;
 
-    //private AmmoManager ammoManager;
-    //private HPManager hpManager;
-
     private EnemyManager enemyManager;
 
 
@@ -41,22 +32,10 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         sceneIndexToLoadIfReset = 1;
-        if (SceneManager.GetActiveScene().buildIndex != firstLevelBuildIndex)
-        {
-            //         playerBehaviourController.SetBullets(PlayerPrefs.GetInt("PlayerBullets"));
-            //         playerBehaviourController.SetHP(PlayerPrefs.GetFloat("PlayerHP"));
-        }
     }
 
     void Awake()
     {
-        //playerMovementController = FindObjectOfType<PlayerMovementController>();
-        //playerBehaviourController = FindObjectOfType<PlayerBehaviourController>();
-        //soundManager = FindObjectOfType<SoundManager>();
-        //ammoManager = FindObjectOfType<AmmoManager>();
-        //ammoManager.SetParameters(currentPlayerAmmo, maxPlayerAmmo);
-        //hpManager = FindObjectOfType<HPManager>();
-        //hpManager.SetParameters(currentPlayerLives, maxPlayerLives);
         enemyManager = FindObjectOfType<EnemyManager>();
     }
 
@@ -99,9 +78,6 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.sceneCountInBuildSettings - 1 != SceneManager.GetActiveScene().buildIndex)
         {
-            //        PlayerPrefs.SetInt("PlayerBullets", playerBehaviourController.GetBullets());
-            //        PlayerPrefs.SetFloat("PlayerHP", playerBehaviourController.GetHP());
-            //PlayerPrefs.Save();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
@@ -124,7 +100,6 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0;
-        //    playerMovementController.enabled = false;
         pauseScreen.SetActive(true);
         gamePaused = true;
     }
@@ -132,24 +107,12 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
-        //    playerMovementController.enabled = true;
         pauseScreen.SetActive(false);
         gamePaused = false;
     }
 
     public void BackToMainMenu() { SceneManager.LoadScene(0); }
 
-    //public void BulletShot() { ammoManager.ReduceAmmoBy1(); }
-
-    //public void Reload() { ammoManager.Reload(); }
-
-    //public void ReduceLivesByOne() { hpManager.ReduceHPBy1(); }
-
-    //public void RefillLives() { hpManager.Refill(); }
-
-    public int GetCurrentLives() { return currentPlayerLives; }
-
-    public int GetMaxLives() { return maxPlayerLives; }
 
     public Transform GetSpawnPoint() { return spawnTransform; }
 }
