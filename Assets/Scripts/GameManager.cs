@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float tiempoDeJuegoReal = 0;
+
     [SerializeField] private GameObject loseScreen;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject pauseScreen;
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
         {
             if (gameEnded) SceneManager.LoadScene(sceneIndexToLoadIfReset, LoadSceneMode.Single);
         }
+        tiempoDeJuegoReal += Time.deltaTime;
 
     }
 
@@ -62,7 +65,9 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         sceneIndexToLoadIfReset = SceneManager.GetActiveScene().buildIndex;
-        StartCoroutine(ShowLoseScreen(1.5f));
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        //StartCoroutine(ShowLoseScreen(1.5f));
         //soundManager.PlaySFX(loseSound);
 
     }
@@ -115,5 +120,13 @@ public class GameManager : MonoBehaviour
 
 
     public Transform GetSpawnPoint() { return spawnTransform; }
+
+    private void Score()
+    {
+        //Formula: (6000 * cantidad de segundos ) - 70 * cantidad de obst�culos chocados
+        string score = ((60 * (int)tiempoDeJuegoReal) - 26 * enemyManager.quantityEnemiesDestroyed).ToString();
+        PlayerPrefs.SetString("score", score);
+        PlayerPrefs.Save();
+    }
 }
 

@@ -47,8 +47,8 @@ public class PlayerAttack : MonoBehaviour
             rb.velocity = lookDir.normalized * throwVelocity;
             Debug.Log("dispare");
             ammo -= 1;
-            _uiController.DecreaseLives(ammo);
-            //audioManager.PlaySFX(attackClip);
+            _uiController.DecreaseAmmo(ammo);
+            _audioManager.PlaySFX(attackClip);
         }
         else
         {

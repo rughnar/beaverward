@@ -5,13 +5,38 @@ using UnityEngine;
 public class DamController : MonoBehaviour
 {
 
-    public float _hp;
+    public int _hp = 100;
     private GameManager _gameManager;
+    private UIController UIController;
 
-    public void ReduceHealth(float hp)
+
+    void Awake()
+    {
+        _gameManager = FindObjectOfType<GameManager>();
+        UIController = FindObjectOfType<UIController>();
+        UIController.SetLivesSilently(_hp);
+    }
+
+    public void ReduceHealth(int hp)
     {
         _hp -= hp;
-        if (hp <= 0) _gameManager.LoseGame();
+        UIController.DecreaseLives(_hp);
+
+        if (_hp <= 0) _gameManager.LoseGame();
+    }
+
+    public void AddHealth(int hp)
+    {
+        if (_hp + hp < 100)
+        {
+            _hp += hp;
+            UIController.IncreaseLives(_hp);
+        }
+        else
+        {
+            _hp = 100;
+        }
+
     }
 
 }

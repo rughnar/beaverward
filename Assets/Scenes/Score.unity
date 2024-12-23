@@ -276,7 +276,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startFadedOut: 0
+  startFadedOut: 1
 --- !u!1 &369823183
 GameObject:
   m_ObjectHideFlags: 0

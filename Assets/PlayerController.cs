@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _hp = 100;
 
     private AudioManager audioManager;
-    private UIController UIController;
     private GameManager gameManager;
 
 
@@ -18,8 +17,6 @@ public class PlayerController : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         audioManager = FindObjectOfType<AudioManager>();
-        UIController = FindObjectOfType<UIController>();
-        UIController.SetHPBar(_hp);
     }
 
     public void ReduceHealth(float hp)

@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a1c2a40301fe54b94e828ce16c01d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 5
+  attackPoints: 20
+  velocity: 10
   hp: 15
   destroy: {fileID: 0}

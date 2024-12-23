@@ -1,27 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] Slider healthSlider;
-    [SerializeField] TMP_Text livesText;
+    public TMP_Text livesText;
+    public TMP_Text ammoText;
 
     private Coroutine livesColorChange = null;
+    private Coroutine ammoColorChange = null;
 
+    /*
+        public void SetHPBar(float hp)
+        {
+            healthSlider.SetValueWithoutNotify(hp);
+        }
 
-    public void SetHPBar(float hp)
-    {
-        healthSlider.SetValueWithoutNotify(hp);
-    }
-
-    public void AddToHPBar(float hp)
-    {
-        healthSlider.SetValueWithoutNotify(healthSlider.value + hp);
-    }
-
+        public void AddToHPBar(float hp)
+        {
+            healthSlider.SetValueWithoutNotify(healthSlider.value + hp);
+        }
+    */
 
     public void SetLivesSilently(int lives)
     {
@@ -43,10 +42,33 @@ public class UIController : MonoBehaviour
     }
 
 
+
+    public void SetAmmoSilently(int ammo)
+    {
+        ammoText.text = "" + ammo;
+    }
+
+    public void IncreaseAmmo(int ammo)
+    {
+        if (ammoColorChange != null) StopCoroutine(ammoColorChange);
+        ammoColorChange = StartCoroutine(GoFromColorToColorIn(0.2f, Color.green, Color.white, ammoText));
+        SetLivesSilently(ammo);
+    }
+
+    public void DecreaseAmmo(int ammo)
+    {
+        if (ammoColorChange != null) StopCoroutine(ammoColorChange);
+        ammoColorChange = StartCoroutine(GoFromColorToColorIn(0.2f, Color.red, Color.white, ammoText));
+        SetAmmoSilently(ammo);
+    }
+
+
     IEnumerator GoFromColorToColorIn(float seconds, Color colorFrom, Color colorTo, TMP_Text text)
     {
         text.faceColor = colorFrom;
         yield return new WaitForSeconds(seconds);
         text.faceColor = colorTo;
     }
+
+
 }

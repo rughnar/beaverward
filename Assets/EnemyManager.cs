@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float timeBetweenSpawns = 4f;
     private GameManager gameManager;
     private int currentEnemiesOnLevel = 0;
-    private int quantityEnemiesDestroyed = 0;
+    public int quantityEnemiesDestroyed = 0;
     private float lastEnemySpawnTime = 0f;
     private List<int> currentSpawnedEnemies;
     private int totalEnemiesToSpawn = 0;

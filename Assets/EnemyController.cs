@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Dam"))
         {
-            other.gameObject.GetComponent<DamController>().ReduceHealth(attackPoints);
+            other.gameObject.GetComponent<DamController>().ReduceHealth((int)attackPoints);
             Destroy(gameObject, 0.05f);
         }
 
