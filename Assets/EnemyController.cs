@@ -5,19 +5,20 @@ public class EnemyController : MonoBehaviour
     public float velocity = 1f;
     public float hp;
     public AudioClip destroy;
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
     private AudioManager _audioManager;
-
+    private EnemyManager _enemyManager;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _audioManager = FindObjectOfType<AudioManager>();
+        _enemyManager = FindObjectOfType<EnemyManager>();
     }
 
     void FixedUpdate()
     {
-        rb.MovePosition(new Vector2(rb.position.x, rb.position.y - velocity * 0.01f));
+        _rb.MovePosition(new Vector2(_rb.position.x, _rb.position.y - velocity * 0.01f));
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -31,8 +32,11 @@ public class EnemyController : MonoBehaviour
         if (hp <= 0)
         {
             //audioManager.PlaySFX(destroy);
+            _enemyManager.EnemyTakenDown();
+
             Destroy(gameObject, 0.05f);
         }
 
     }
+
 }

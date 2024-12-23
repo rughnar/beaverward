@@ -7643,7 +7643,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a6caae4ca41934ab997d9c28fe0b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLevelEnemies: 10
+  enemiesQuantityToSpawn: 0100000002000000
+  enemyPrefabs:
+  - {fileID: 5864666479072975734, guid: 5f84f1a08c016f44fbbb8da565f606d1, type: 3}
+  - {fileID: 9079620509045703938, guid: 28c00f42d7644cf43ba3e149c5bd7386, type: 3}
   spawnPoints:
   - {fileID: 67298388}
   - {fileID: 1376397535}
@@ -7651,7 +7654,6 @@ MonoBehaviour:
   - {fileID: 1362236606}
   - {fileID: 932984917}
   maxEnemiesAtTheSameTime: 5
-  enemyPrefab: {fileID: 5864666479072975734, guid: 5f84f1a08c016f44fbbb8da565f606d1, type: 3}
   timeBetweenSpawns: 4
 --- !u!1 &993618184
 GameObject:
