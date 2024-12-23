@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public float attackPoints = 10;
     public float velocity = 1f;
     public float hp;
     public AudioClip destroy;
@@ -23,7 +24,12 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Dam")) Debug.Log("Le pegue a la represa");//ReduceHealth();
+        if (other.gameObject.CompareTag("Dam"))
+        {
+            other.gameObject.GetComponent<DamController>().ReduceHealth(attackPoints);
+            Destroy(gameObject, 0.05f);
+        }
+
     }
 
     public void ReduceHealth(float hp)

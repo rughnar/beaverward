@@ -66,7 +66,7 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnRandomEnemyRecursively(int minusIndex)
     {
-        int index = Random.Range(minusIndex, enemyPrefabs.Count);
+        int index = Mathf.Abs(Random.Range(minusIndex, enemyPrefabs.Count));
         if (currentSpawnedEnemies[index] < enemiesQuantityToSpawn[index])
         {
             Instantiate(enemyPrefabs[index], spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);

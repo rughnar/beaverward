@@ -7456,9 +7456,10 @@ GameObject:
   m_Component:
   - component: {fileID: 941549007}
   - component: {fileID: 941549008}
+  - component: {fileID: 941549009}
   m_Layer: 0
   m_Name: Represa
-  m_TagString: Untagged
+  m_TagString: Dam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7537,6 +7538,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 13.811954, y: 0.93815315}
   m_EdgeRadius: 0
+--- !u!114 &941549009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941549006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3818b252ddf1fa499e5e2bce99e5c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 1
 --- !u!1001 &948128713
 PrefabInstance:
   m_ObjectHideFlags: 0
