@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     public void ReduceHealth(float hp)
     {
         this.hp -= hp;
-        if (hp <= 0)
+        if (this.hp <= 0)
         {
             //audioManager.PlaySFX(destroy);
             _enemyManager.EnemyTakenDown();

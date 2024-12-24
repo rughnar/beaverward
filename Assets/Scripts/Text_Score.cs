@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class Text_Score : MonoBehaviour
 {
-    
+
     TextMeshProUGUI texto;
 
     private void Awake()
     {
         texto = GetComponent<TextMeshProUGUI>();
+        texto.text = PlayerPrefs.GetString("score").ToString();
+
     }
 
     void Start()

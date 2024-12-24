@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour
     {
         if (ammoColorChange != null) StopCoroutine(ammoColorChange);
         ammoColorChange = StartCoroutine(GoFromColorToColorIn(0.2f, Color.green, Color.white, ammoText));
-        SetLivesSilently(ammo);
+        SetAmmoSilently(ammo);
     }
 
     public void DecreaseAmmo(int ammo)
@@ -70,5 +70,10 @@ public class UIController : MonoBehaviour
         text.faceColor = colorTo;
     }
 
+    public void KeepSameLivesValue()
+    {
+        if (livesColorChange != null) StopCoroutine(livesColorChange);
+        livesColorChange = StartCoroutine(GoFromColorToColorIn(0.3f, Color.yellow, Color.white, livesText));
 
+    }
 }

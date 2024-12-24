@@ -35,8 +35,14 @@ public class DamController : MonoBehaviour
         else
         {
             _hp = 100;
+            UIController.KeepSameLivesValue();
+
         }
 
     }
 
+    public bool IsAtMaxHp()
+    {
+        return _hp == 100;
+    }
 }

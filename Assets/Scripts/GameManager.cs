@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         sceneIndexToLoadIfReset = SceneManager.GetActiveScene().buildIndex;
+        Score();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
         //StartCoroutine(ShowLoseScreen(1.5f));
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.sceneCountInBuildSettings - 1 != SceneManager.GetActiveScene().buildIndex)
         {
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else

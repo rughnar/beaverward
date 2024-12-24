@@ -22,4 +22,9 @@ public class WeaponStick : MonoBehaviour
         }
     }
 
+    private void OnBecameInvisible()
+    {
+        Destroy(this);
+    }
+
 }

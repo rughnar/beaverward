@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1245717211695664180}
   - component: {fileID: 6793186851789061375}
   - component: {fileID: 8449198140578214401}
+  - component: {fileID: 2491591635851684200}
   m_Layer: 0
   m_Name: Pino
   m_TagString: Pino
@@ -215,3 +216,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.644284, y: 5.0339947}
   m_EdgeRadius: 0
+--- !u!114 &2491591635851684200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761385524596966464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e33413c76eae694987d52a321daf1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
+  states:
+  - {fileID: 21300000, guid: b2bf0b1e4ebc25b44be9d757f3ed0c10, type: 3}
+  - {fileID: 21300000, guid: 498e338f6d2d2374a8cd88e254cd4ffb, type: 3}
+  - {fileID: 21300000, guid: 315933479d39279449016999660c84d1, type: 3}
+  ammoToGive: 5
+  timeTillRespawn: 100

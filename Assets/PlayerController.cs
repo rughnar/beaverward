@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private AudioManager audioManager;
     private GameManager gameManager;
 
-
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -22,10 +21,12 @@ public class PlayerController : MonoBehaviour
     public void ReduceHealth(float hp)
     {
         _hp -= hp;
-        //audioManager.PlaySFX(hurt);
+        audioManager.PlaySFX(hurt);
         if (_hp <= 0)
         {
             gameManager.EndLevel();
         }
     }
+
+
 }
