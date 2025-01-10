@@ -1,6 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEngine.AI;
+
 public class PlayerAttack : MonoBehaviour
 {
     public AudioClip attackClip;
@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject weaponStickPrefab;
     public float throwVelocity = 16f;
     public int ammo = 10;
+    public float timeBetweenTreeInteractions = 0.3f;
     private PlayerInputActions _playerActions;
     private InputAction _attack;
     private InputAction _collect;
@@ -16,6 +17,8 @@ public class PlayerAttack : MonoBehaviour
     private AudioManager _audioManager;
     private Camera _cam;
     private UIController _uiController;
+
+    private float lastTreeAttack = 0f;
 
     private void Awake()
     {
@@ -68,14 +71,14 @@ public class PlayerAttack : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Pino") && _collect.IsPressed())
+        if (other.gameObject.CompareTag("Pino") && _collect.IsPressed() && Time.fixedTime - lastTreeAttack > timeBetweenTreeInteractions)
         {
             TreeController tree = other.gameObject.GetComponent<TreeController>();
             tree.ReduceHealth();
             ammo += tree.ammoToGive;
             _uiController.IncreaseAmmo(ammo);
             _audioManager.PlaySFX(eatTreeClip);
-
+            lastTreeAttack = Time.fixedTime;
         }
 
     }

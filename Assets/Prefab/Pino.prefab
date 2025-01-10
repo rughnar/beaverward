@@ -233,5 +233,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b2bf0b1e4ebc25b44be9d757f3ed0c10, type: 3}
   - {fileID: 21300000, guid: 498e338f6d2d2374a8cd88e254cd4ffb, type: 3}
   - {fileID: 21300000, guid: 315933479d39279449016999660c84d1, type: 3}
-  ammoToGive: 5
+  ammoToGive: 1
   timeTillRespawn: 100
+  shadowRenderer: {fileID: 3774639350917117833}

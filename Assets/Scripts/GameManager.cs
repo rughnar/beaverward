@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour
     private AudioManager audioManager;
 
     private EnemyManager enemyManager;
-
+    private PlayerController playerController;
+    private PlayerMovement playerMovement;
+    private PlayerAttack playerAttack;
 
 
     // Start is called before the first frame update
@@ -39,6 +41,9 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         enemyManager = FindObjectOfType<EnemyManager>();
+        playerController = FindObjectOfType<PlayerController>();
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        playerAttack = FindObjectOfType<PlayerAttack>();
     }
 
     // Update is called once per frame
@@ -109,6 +114,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         pauseScreen.SetActive(true);
         gamePaused = true;
+        playerController.enabled = false;
+        playerMovement.enabled = false;
+        playerAttack.enabled = false;
     }
 
     public void Resume()
@@ -116,6 +124,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         pauseScreen.SetActive(false);
         gamePaused = false;
+        playerController.enabled = true;
+        playerMovement.enabled = true;
+        playerAttack.enabled = true;
     }
 
     public void BackToMainMenu() { SceneManager.LoadScene(0); }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D _rb;
     private AudioManager _audioManager;
     private EnemyManager _enemyManager;
+    private SpriteRenderer _spriteRenderer;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _audioManager = FindObjectOfType<AudioManager>();
         _enemyManager = FindObjectOfType<EnemyManager>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -42,7 +45,19 @@ public class EnemyController : MonoBehaviour
 
             Destroy(gameObject, 0.05f);
         }
+        else
+        {
+            StartCoroutine(GoFromColorToColorIn(0.2f, Color.red, Color.white));
+        }
 
+    }
+
+
+    IEnumerator GoFromColorToColorIn(float seconds, Color colorFrom, Color colorTo)
+    {
+        _spriteRenderer.color = colorFrom;
+        yield return new WaitForSeconds(seconds);
+        _spriteRenderer.color = colorTo;
     }
 
 }

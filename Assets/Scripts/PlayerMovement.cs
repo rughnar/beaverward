@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveInput = _playerActions.Player.Move.ReadValue<Vector2>();
 
-        if (_moveInput.x != 0)
+        if (_moveInput != Vector2.zero)
         {
             _rb.MovePosition(new Vector2(_rb.position.x + _moveInput.x * 0.01f * velocity, _rb.position.y + _moveInput.y * 0.01f * velocity));
             _animator.SetBool("isWalking", true);
